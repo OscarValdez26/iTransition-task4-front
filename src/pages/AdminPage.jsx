@@ -7,11 +7,12 @@ function AdminPage() {
     const [modify,setModify] = useState([]);
     useEffect(() => {
         console.log("User en pagina admin: ",user);
-        // let newUser = user;
-        // const timeElapsed = Date.now();
-        // const today = new Date(timeElapsed);
-        //  newUser.lastLogin = today.toUTCString();;
-        //  updateLog(newUser);
+        let newUser = user;
+        const timeElapsed = Date.now();
+        const today = new Date(timeElapsed);
+         newUser.lastLogin = today.toUTCString();
+         console.log(newUser);
+         updateLog(newUser);
          getusers();
     }, []);
     const columns = [
