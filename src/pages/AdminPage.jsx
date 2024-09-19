@@ -49,7 +49,7 @@ function AdminPage() {
             updateuser(element);
         });
         //getusers();
-        window.location.reload();
+        //window.location.reload();
     }
     const unlockUser = ()=>{
         let newModify = modify;
@@ -58,7 +58,7 @@ function AdminPage() {
             updateuser(element);
         });
         //getusers();
-        window.location.reload();
+        //window.location.reload();
     }
     const deleteUser = ()=>{
         let newModify = modify;
@@ -67,7 +67,7 @@ function AdminPage() {
             updateuser(element);
         });
         //getusers();
-        window.location.reload();
+        //window.location.reload();
     }
     return (
         <div>
