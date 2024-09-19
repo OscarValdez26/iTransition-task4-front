@@ -51,6 +51,7 @@ export const AuthProvider = ({ children }) => {
     const getusers = async () =>{
         try{
             const response = await getUsersRequest();
+            console.log(response.data);
             setAllUsers(response.data);
         }catch(error){
             //setErrors(error.response.data);
@@ -67,6 +68,7 @@ export const AuthProvider = ({ children }) => {
     const updateLog = async (user) =>{
         try{
             const response = await updateLastLogin(user);
+            console.log(response.data);
             console.log(response.data);
         }catch(error){
             //setErrors(error.response.data);
