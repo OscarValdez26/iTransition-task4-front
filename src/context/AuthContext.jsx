@@ -52,6 +52,7 @@ export const AuthProvider = ({ children }) => {
         try{
             const response = await getUsersRequest();
             console.log("Respuesta getUsers: ",response.data);
+            console.log(response);
             setAllUsers(response.data);
         }catch(error){
             //setErrors(error.response.data);
