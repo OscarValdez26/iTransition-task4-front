@@ -6,7 +6,7 @@ function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog } = useAuth();
     const [modify,setModify] = useState([]);
     useEffect(() => {
-        console.log(user);
+        console.log("User en pagina admin: ",user);
         // let newUser = user;
         // const timeElapsed = Date.now();
         // const today = new Date(timeElapsed);
@@ -40,7 +40,7 @@ function AdminPage() {
         },
     ];
     const data = allUsers;
-    console.log(data);
+    console.log("All users: ",data);
     const lockUser = ()=>{
         let newModify = modify;
         newModify.forEach(element => {
