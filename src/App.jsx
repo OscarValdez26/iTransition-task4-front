@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage.jsx'
-import RegisterPage from './pages/registerPage.jsx'
+import RegisterPage from './pages/RegisterPage.jsx'
 import AdminPage from './pages/AdminPage.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import ProtectedRoute from './ProtectedRoute.jsx'
