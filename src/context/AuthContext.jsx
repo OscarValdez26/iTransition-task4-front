@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     const signup = async (user) => {
         try {
             const response = await registerRequest(user);
-            console.log(response.data);
+            console.log("Respuesta registro: " ,response.data);
             setUser(response.data);
             setIsAuth(true);
         } catch (error) {
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     const signin = async (user) => {
         try {
             const response = await loginRequest(user);
-            console.log(response.data);
+            console.log("Respuesta Login: ",response.data);
             setUser(response.data);
             setIsAuth(true);
         } catch (error) {
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     const signout = async () =>{
         try{
             const response = await logoutRequest();
-            console.log(response);
+            console.log("Respuesta logout: ",response);
             setUser(null);
             setIsAuth(false);
         }catch(error){
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
     const getusers = async () =>{
         try{
             const response = await getUsersRequest();
-            console.log(response.data);
+            console.log("Respuesta getUsers: ",response.data);
             setAllUsers(response.data);
         }catch(error){
             //setErrors(error.response.data);
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
     const updateuser = async (user) =>{
         try{
             const response = await updateUserRequest(user);
-            console.log(response.data);
+            console.log("Respuesta updateStatus: ",response.data);
         }catch(error){
             //setErrors(error.response.data);
         }
@@ -68,8 +68,7 @@ export const AuthProvider = ({ children }) => {
     const updateLog = async (user) =>{
         try{
             const response = await updateLastLogin(user);
-            console.log(response.data);
-            console.log(response.data);
+            console.log("Respuesta updateLogin: ",response.data);
         }catch(error){
             //setErrors(error.response.data);
         }
