@@ -6,11 +6,11 @@ function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog } = useAuth();
     const [modify,setModify] = useState([]);
     useEffect(() => {
-        let newUser = user;
-        const timeElapsed = Date.now();
-        const today = new Date(timeElapsed);
-         newUser.lastLogin = today.toUTCString();;
-         updateLog(newUser);
+        // let newUser = user;
+        // const timeElapsed = Date.now();
+        // const today = new Date(timeElapsed);
+        //  newUser.lastLogin = today.toUTCString();;
+        //  updateLog(newUser);
          getusers();
     }, []);
     const columns = [
