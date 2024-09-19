@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
             setUser(null);
             setIsAuth(false);
         }catch(error){
-            setErrors(error.response.data);
+            //setErrors(error.response.data);
         }
     }
     const getusers = async () =>{
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
             const response = await getUsersRequest();
             setAllUsers(response.data);
         }catch(error){
-            setErrors(error.response.data);
+            //setErrors(error.response.data);
         }
     }
     const updateuser = async (user) =>{
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
             const response = await updateUserRequest(user);
             console.log(response.data);
         }catch(error){
-            setErrors(error.response.data);
+            //setErrors(error.response.data);
         }
     }
     const updateLog = async (user) =>{
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
             const response = await updateLastLogin(user);
             console.log(response.data);
         }catch(error){
-            setErrors(error.response.data);
+            //setErrors(error.response.data);
         }
     }
     useEffect(() => {
