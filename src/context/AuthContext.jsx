@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
             console.log(response);
             setAllUsers(response.data);
         }catch(error){
-            //setErrors(error.response.data);
+            console.log(error.response.data);
         }
     }
     const updateuser = async (user) =>{
