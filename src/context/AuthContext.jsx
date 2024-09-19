@@ -21,7 +21,6 @@ export const AuthProvider = ({ children }) => {
     const signup = async (user) => {
         try {
             const response = await registerRequest(user);
-            console.log("Respuesta registro: " ,response.data);
             setUser(response.data);
             setIsAuth(true);
         } catch (error) {
@@ -31,7 +30,6 @@ export const AuthProvider = ({ children }) => {
     const signin = async (user) => {
         try {
             const response = await loginRequest(user);
-            console.log("Respuesta Login: ",response.data);
             setUser(response.data);
             setIsAuth(true);
         } catch (error) {
@@ -41,7 +39,6 @@ export const AuthProvider = ({ children }) => {
     const signout = async () =>{
         try{
             const response = await logoutRequest();
-            console.log("Respuesta logout: ",response);
             setUser(null);
             setIsAuth(false);
         }catch(error){
@@ -51,8 +48,6 @@ export const AuthProvider = ({ children }) => {
     const getusers = async () =>{
         try{
             const response = await getUsersRequest();
-            console.log("Respuesta getUsers: ",response.data);
-            console.log(response);
             setAllUsers(response.data);
         }catch(error){
             console.log(error);
@@ -61,7 +56,6 @@ export const AuthProvider = ({ children }) => {
     const updateuser = async (user) =>{
         try{
             const response = await updateUserRequest(user);
-            console.log("Respuesta updateStatus: ",response.data);
         }catch(error){
             console.log(error);
         }
@@ -69,7 +63,6 @@ export const AuthProvider = ({ children }) => {
     const updateLog = async (user) =>{
         try{
             const response = await updateLastLogin(user);
-            console.log("Respuesta updateLogin: ",response.data);
         }catch(error){
             console.log(error);
         }
@@ -86,6 +79,8 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         async function checkLogin() {
             const cookies = Cookies.get();
+            console.log("Cookies: ", cookies);
+            console.log("Token: ", cookies.token);
             if (!cookies.token) {
                 setIsAuth(false);
                 setUser(null);

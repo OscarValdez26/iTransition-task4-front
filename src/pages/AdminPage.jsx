@@ -6,12 +6,10 @@ function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog } = useAuth();
     const [modify,setModify] = useState([]);
     useEffect(() => {
-        console.log("User en pagina admin: ",user);
         let newUser = user;
         const timeElapsed = Date.now();
         const today = new Date(timeElapsed);
          newUser.lastLogin = today.toUTCString();
-         console.log(newUser);
          updateLog(newUser);
          getusers();
     }, []);
@@ -41,15 +39,13 @@ function AdminPage() {
         },
     ];
     const data = allUsers;
-    console.log("All users: ",data);
     const lockUser = ()=>{
         let newModify = modify;
         newModify.forEach(element => {
             element.status = "Blocked";
             updateuser(element);
         });
-        //getusers();
-        //window.location.reload();
+        window.location.reload();
     }
     const unlockUser = ()=>{
         let newModify = modify;
@@ -57,8 +53,7 @@ function AdminPage() {
             element.status = "Unblocked";
             updateuser(element);
         });
-        //getusers();
-        //window.location.reload();
+        window.location.reload();
     }
     const deleteUser = ()=>{
         let newModify = modify;
@@ -66,8 +61,7 @@ function AdminPage() {
             element.status = "Deleted";
             updateuser(element);
         });
-        //getusers();
-        //window.location.reload();
+        window.location.reload();
     }
     return (
         <div>
