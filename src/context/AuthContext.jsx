@@ -16,7 +16,43 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuth, setIsAuth] = useState(false);
     const [errors, setErrors] = useState([]);
-    const [allUsers,setAllUsers] = useState([])
+    const [allUsers,setAllUsers] = useState([]);
+    const [cookieToken,setCookieToken] = useState([]);
+
+    useEffect(() => {
+        if (errors.length > 0) {
+            const timer = setTimeout(() => {
+                setErrors([]);
+            }, 5000)
+            return () => clearTimeout(timer);
+        }
+    }, [errors]);
+
+    useEffect(() => {
+        console.log("CHECK  LOGIN");
+        async function checkLogin() {
+            const cookies = Cookies.get();
+            if (!cookies.token) {
+                setIsAuth(false);
+                setUser(null);
+                return;
+            }
+            try {
+                const response = await verifyTokenRequest(cookies.token);
+                if (!response.data) {
+                    return setIsAuth(false);
+                }
+                else {
+                    setIsAuth(true);
+                    setUser(response.data);
+                }
+            } catch (error) {
+                setIsAuth(false);
+                setUser(null);
+            }
+        }
+        checkLogin();
+    }, [])
 
     const signup = async (user) => {
         try {
@@ -67,41 +103,6 @@ export const AuthProvider = ({ children }) => {
             console.log(error);
         }
     }
-    useEffect(() => {
-        if (errors.length > 0) {
-            const timer = setTimeout(() => {
-                setErrors([]);
-            }, 5000)
-            return () => clearTimeout(timer);
-        }
-    }, [errors]);
-
-    useEffect(() => {
-        async function checkLogin() {
-            const cookies = Cookies.get();
-            console.log("Cookies: ", cookies);
-            console.log("Token: ", cookies.token);
-            if (!cookies.token) {
-                setIsAuth(false);
-                setUser(null);
-                return;
-            }
-            try {
-                const response = await verifyTokenRequest(cookies.token);
-                if (!response.data) {
-                    return setIsAuth(false);
-                }
-                else {
-                    setIsAuth(true);
-                    setUser(response.data);
-                }
-            } catch (error) {
-                setIsAuth(false);
-                setUser(null);
-            }
-        }
-        checkLogin();
-    }, [])
 
     return (
         <AuthContext.Provider value={{ signup, signin, signout, getusers, updateuser,updateLog, allUsers, user, isAuth, errors }}>
