@@ -23,7 +23,8 @@ function AdminPage() {
     }, [statusChanged]);
     useEffect(() => {
         data = allUsers;
-        signin(user);
+        console.log("USER: ",user);
+        console.log("ALL USERS: ",allUsers);
    }, [allUsers]);
     const columns = [
         {
