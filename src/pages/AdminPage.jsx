@@ -20,13 +20,11 @@ function AdminPage() {
     }, []);
     useEffect(() => {
          getusers();
-         data = allUsers;
-         console.log("USER!!!",user);
     }, [statusChanged]);
-//     useEffect(() => {
-//         data = allUsers;
-//         //Buscar ID en DB
-//    }, [allUsers]);
+    useEffect(() => {
+        data = allUsers;
+        //Buscar ID en DB
+   }, [allUsers]);
     const columns = [
         {
             name: "Id",
