@@ -25,7 +25,7 @@ function AdminPage() {
         data = allUsers;
         console.log("USER: ",user);
         console.log("ALL USERS: ",allUsers);
-        if(allUsers > 0){
+        if(allUsers.length > 0){
             const filtro = allUsers.filter((userContained) => userContained.email === user.email);
             console.log("FILTRO: ",filtro);
             // localizarTodasLasInstancias( 'code', 'AA4');
