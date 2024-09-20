@@ -28,10 +28,14 @@ function AdminPage() {
             if(filtro.length > 0){
             console.log("FILTRO: ",filtro[0]);
             console.log(filtro[0].status,typeof(filtro[0].status));
-            if(filtro[0].status === "Blocked"){console.log("Usuario bloqueado");}
+            if(filtro[0].status === "Blocked"){
+                console.log("User blocked");
+                signout();
+            }
             }
             else{
-                console.log("Usuario eliminado");
+                console.log("User deleted");
+                signout();
             }
         }
    }, [allUsers]);
