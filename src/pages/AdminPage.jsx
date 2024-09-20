@@ -6,39 +6,35 @@ import { useNavigate } from 'react-router-dom';
 
 function AdminPage() {
     const navigate = useNavigate();
-    const { user, signout, signin, getusers, allUsers, updateuser, updateLog} = useAuth();
-    const [modify,setModify] = useState([]);
-    const [statusChanged,setStatusChanged] = useState(false);
+    const { user, signout, signin, getusers, allUsers, updateuser, updateLog } = useAuth();
+    const [modify, setModify] = useState([]);
+    const [statusChanged, setStatusChanged] = useState(false);
     let data = allUsers;
 
     useEffect(() => {
         let newUser = user;
         const timeElapsed = Date.now();
         const today = new Date(timeElapsed);
-         newUser.lastLogin = today.toUTCString();
-         updateLog(newUser);
+        newUser.lastLogin = today.toUTCString();
+        updateLog(newUser);
     }, []);
     useEffect(() => {
-         getusers();
+        getusers();
     }, [statusChanged]);
     useEffect(() => {
         data = allUsers;
-        if(allUsers.length > 0){
+        if (allUsers.length > 0) {
             const filtro = allUsers.filter((userContained) => userContained.email === user.email);
-            if(filtro.length > 0){
-            console.log("FILTRO: ",filtro[0]);
-            console.log(filtro[0].status,typeof(filtro[0].status));
-            if(filtro[0].status === "Blocked"){
-                console.log("User blocked");
-                signout();
+            if (filtro.length > 0) {
+                if (filtro[0].status === "Blocked") {
+                    signout();
+                }
             }
-            }
-            else{
-                console.log("User deleted");
+            else {
                 signout();
             }
         }
-   }, [allUsers]);
+    }, [allUsers]);
     const columns = [
         {
             name: "Id",
@@ -47,12 +43,12 @@ function AdminPage() {
         {
             name: "Username",
             selector: row => row.username,
-            sortable:true
+            sortable: true
         },
         {
             name: "Email",
             selector: row => row.email,
-            sortable:true
+            sortable: true
         },
         {
             name: "Last log in",
@@ -61,11 +57,11 @@ function AdminPage() {
         {
             name: "Status",
             selector: row => row.status,
-            sortable:true
+            sortable: true
         },
-    ];   
-    
-    const lockUser = ()=>{
+    ];
+
+    const lockUser = () => {
         let newModify = modify;
         newModify.forEach(element => {
             element.status = "Blocked";
@@ -73,7 +69,7 @@ function AdminPage() {
         });
         setStatusChanged(!statusChanged);
     }
-    const unlockUser = ()=>{
+    const unlockUser = () => {
         let newModify = modify;
         newModify.forEach(element => {
             element.status = "Unblocked";
@@ -81,7 +77,7 @@ function AdminPage() {
         });
         setStatusChanged(!statusChanged);
     }
-    const deleteUser = ()=>{
+    const deleteUser = () => {
         let newModify = modify;
         newModify.forEach(element => {
             element.status = "Deleted";
@@ -92,22 +88,24 @@ function AdminPage() {
     return (
         <div>
             <div className='flex justify-between'>
-            <h1 className='text-bold text-2xl m-2'>Welcome {user.username}</h1>
-            <button className='text-bold text-sky-500 m-2 p-2 rounded-md bg-gray-700' onClick={()=>{signout()}}>Log Out</button>
+                <h1 className='text-bold text-2xl m-2'>Welcome {user.username}</h1>
+                <button className='text-bold text-sky-500 m-2 p-2 rounded-md bg-gray-700' onClick={() => { signout() }}>Log Out</button>
             </div>
             <div className='flex justify-start'>
-                <button className='text-bold text-white m-2 bg-red-500 p-2 rounded-md' onClick={()=>{lockUser()}}>Block</button>
-                <button className='text-bold text-sky-500 m-2 bg-white p-2 rounded-md' onClick={()=>{unlockUser()}}><img src='/unblock.png' className='w-8'/></button>
-                <button className='text-bold text-sky-500 m-2 bg-white p-2 rounded-md' onClick={()=>{deleteUser()}}><img src='/trash.png' className='w-8'/></button>
+                <button className='text-bold text-white m-2 bg-red-500 p-2 rounded-md' onClick={() => { lockUser() }}>Block</button>
+                <button className='text-bold text-sky-500 m-2 bg-white p-2 rounded-md' onClick={() => { unlockUser() }}><img src='/unblock.png' className='w-8' /></button>
+                <button className='text-bold text-sky-500 m-2 bg-white p-2 rounded-md' onClick={() => { deleteUser() }}><img src='/trash.png' className='w-8' /></button>
             </div>
-            <Datatable title="Registered Users" 
-            columns={columns} 
-            data={data} 
-            selectableRows 
-            onSelectedRowsChange={(selected)=>{setModify(selected.selectedRows)}} 
-            // pagination 
-            // paginationPerPage={25} 
-            fixedHeader 
+            <Datatable 
+                title="Registered Users"
+                columns={columns}
+                data={data}
+                selectableRows
+                onSelectedRowsChange={(selected) => { setModify(selected.selectedRows) }}
+                pagination 
+                paginationPerPage={25} 
+                fixedHeader
+                clearSelectedRows
             />
         </div>
     );
