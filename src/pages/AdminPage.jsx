@@ -9,6 +9,7 @@ function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
     const [statusChanged,setStatusChanged] = useState(false);
+    let data = allUsers;
 
     useEffect(() => {
         let newUser = user;
@@ -19,8 +20,13 @@ function AdminPage() {
     }, []);
     useEffect(() => {
          getusers();
+         data = allUsers;
          console.log("USER!!!",user);
     }, [statusChanged]);
+//     useEffect(() => {
+//         data = allUsers;
+//         //Buscar ID en DB
+//    }, [allUsers]);
     const columns = [
         {
             name: "Id",
@@ -46,7 +52,7 @@ function AdminPage() {
             sortable:true
         },
     ];   
-    const data = allUsers;
+    
     const lockUser = ()=>{
         let newModify = modify;
         newModify.forEach(element => {
