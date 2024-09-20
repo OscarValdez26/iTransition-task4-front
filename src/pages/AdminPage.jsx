@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
-    const [data,setData] = useState([]);
+    const [data,setData] = useState(allUsers);
     useEffect(() => {
         let newUser = user;
         const timeElapsed = Date.now();
