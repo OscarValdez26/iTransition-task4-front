@@ -81,10 +81,8 @@ export const AuthProvider = ({ children }) => {
     }
     const getusers = async () =>{
         try{
-            console.log("EJECUTANDO GET USERS");
             const response = await getUsersRequest();
             setAllUsers(response.data);
-            console.log("GET USERS!!!", allUsers);
         }catch(error){
             console.log(error);
         }
