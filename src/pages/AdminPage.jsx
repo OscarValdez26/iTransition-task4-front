@@ -45,7 +45,6 @@ function AdminPage() {
             element.status = "Blocked";
             updateuser(element);
         });
-        window.location.reload();
     }
     const unlockUser = ()=>{
         let newModify = modify;
@@ -53,7 +52,6 @@ function AdminPage() {
             element.status = "Unblocked";
             updateuser(element);
         });
-        window.location.reload();
     }
     const deleteUser = ()=>{
         let newModify = modify;
@@ -61,7 +59,6 @@ function AdminPage() {
             element.status = "Deleted";
             updateuser(element);
         });
-        window.location.reload();
     }
     return (
         <div>
