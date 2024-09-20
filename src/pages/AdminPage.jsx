@@ -46,7 +46,7 @@ function AdminPage() {
             sortable:true
         },
     ];   
-    setData = allUsers;
+    setData(allUsers);
     const lockUser = ()=>{
         let newModify = modify;
         newModify.forEach(element => {
