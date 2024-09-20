@@ -5,16 +5,17 @@ import { useEffect, useState } from 'react';
 function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
-    const [data,setData] = useState(allUsers);
+    const [statusChanged,setStatusChanged] = useState(false);
     useEffect(() => {
         let newUser = user;
         const timeElapsed = Date.now();
         const today = new Date(timeElapsed);
          newUser.lastLogin = today.toUTCString();
          updateLog(newUser);
-         getusers();
-         setData(allUsers);
     }, []);
+    useEffect(() => {
+         getusers();
+    }, [statusChanged]);
     const columns = [
         {
             name: "Id",
@@ -40,12 +41,14 @@ function AdminPage() {
             sortable:true
         },
     ];   
+    const data = allUsers;
     const lockUser = ()=>{
         let newModify = modify;
         newModify.forEach(element => {
             element.status = "Blocked";
             updateuser(element);
         });
+        setStatusChanged(!statusChanged);
     }
     const unlockUser = ()=>{
         let newModify = modify;
@@ -53,6 +56,7 @@ function AdminPage() {
             element.status = "Unblocked";
             updateuser(element);
         });
+        setStatusChanged(!statusChanged);
     }
     const deleteUser = ()=>{
         let newModify = modify;
@@ -60,6 +64,7 @@ function AdminPage() {
             element.status = "Deleted";
             updateuser(element);
         });
+        setStatusChanged(!statusChanged);
     }
     return (
         <div>
