@@ -77,8 +77,8 @@ function AdminPage() {
             element.status = "Unblocked";
             updateuser(element);
         });
-        setStatusChanged(!statusChanged);
         clearRows();
+        changeStat();
     }
     const deleteUser = () => {
         let newModify = modify;
@@ -88,6 +88,9 @@ function AdminPage() {
         });
         setStatusChanged(!statusChanged);
         clearRows();
+    }
+    const changeStat = () =>{
+        setTimeout(()=>{setStatusChanged(!statusChanged)},5000);
     }
     const clearRows = () => {
         setToggledClearRows(!toggledClearRows);
