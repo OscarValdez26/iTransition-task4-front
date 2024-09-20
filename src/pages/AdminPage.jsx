@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function AdminPage() {
     const navigate = useNavigate();
-    const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
+    const { user, signout, signin, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
     const [statusChanged,setStatusChanged] = useState(false);
     let data = allUsers;
@@ -23,7 +23,7 @@ function AdminPage() {
     }, [statusChanged]);
     useEffect(() => {
         data = allUsers;
-        //Buscar ID en DB
+        signin(user);
    }, [allUsers]);
     const columns = [
         {

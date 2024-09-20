@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
     const [isAuth, setIsAuth] = useState(false);
     const [errors, setErrors] = useState([]);
     const [allUsers,setAllUsers] = useState([]);
-    const [cookieToken,setCookieToken] = useState([]);
 
     useEffect(() => {
         if (errors.length > 0) {
