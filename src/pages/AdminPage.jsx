@@ -23,17 +23,15 @@ function AdminPage() {
     }, [statusChanged]);
     useEffect(() => {
         data = allUsers;
-        console.log("USER: ",user);
-        console.log("ALL USERS: ",allUsers);
         if(allUsers.length > 0){
             const filtro = allUsers.filter((userContained) => userContained.email === user.email);
+            if(filtro > 0){
             console.log("FILTRO: ",filtro);
-            // localizarTodasLasInstancias( 'code', 'AA4');
-            // const localizarTodasLasInstancias = (propiedad, valor) => {
-            //     return allUsers.filter( element => {
-            //         return element[propiedad] === valor;
-            //     })
-        //console.log("FILTER: ", allUsers.filter(user.email));
+            }
+            else{
+                console.log("Usuario eliminado");
+                navigate(0);
+            }
         }
    }, [allUsers]);
     const columns = [
