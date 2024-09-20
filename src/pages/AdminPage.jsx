@@ -88,7 +88,7 @@ function AdminPage() {
     return (
         <div>
             <div className='flex justify-between'>
-                <h1 className='text-bold text-2xl m-2'>Welcome {user.username}</h1>
+                <h1 className='text-bold text-2xl m-2'>Welcome {user.username} {selected.selectedCount}</h1>
                 <button className='text-bold text-sky-500 m-2 p-2 rounded-md bg-gray-700' onClick={() => { signout() }}>Log Out</button>
             </div>
             <div className='flex justify-start'>
@@ -101,7 +101,7 @@ function AdminPage() {
                 columns={columns}
                 data={data}
                 selectableRows
-                onSelectedRowsChange={(selected) => { setModify(selected.selectedRows) }}
+                onSelectedRowsChange={(selected) => { setModify(selected.selectedRows);console.log(selected.selectedCount) }}
                 pagination 
                 paginationPerPage={25} 
                 fixedHeader
