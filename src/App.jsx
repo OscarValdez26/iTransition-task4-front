@@ -14,9 +14,9 @@ function App() {
           <Route path='/' exact element={<HomePage />} />
           <Route path='/login' exact element={<LoginPage />} />
           <Route path='/register' exact element={<RegisterPage />} />
-          {/* <Route element={<ProtectedRoute/>}> */}
+          <Route element={<ProtectedRoute/>}>
             <Route path='/admin' exact element={<AdminPage/>} />
-          {/* </Route> */}
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
