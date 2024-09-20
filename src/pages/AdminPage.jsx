@@ -51,7 +51,7 @@ function AdminPage() {
             element.status = "Blocked";
             updateuser(element);
         });
-        navigate('/admin');
+        navigate(0);
     }
     const unlockUser = ()=>{
         let newModify = modify;
