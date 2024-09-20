@@ -3,7 +3,7 @@ import Datatable from 'react-data-table-component';
 import { useEffect, useState } from 'react';
 
 function AdminPage() {
-    const { user, signout, getusers, allUsers, updateuser, updateLog, checkLogin } = useAuth();
+    const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
     useEffect(() => {
         let newUser = user;
@@ -11,7 +11,6 @@ function AdminPage() {
         const today = new Date(timeElapsed);
          newUser.lastLogin = today.toUTCString();
          updateLog(newUser);
-         checkLogin();
          getusers();
     }, []);
     const columns = [

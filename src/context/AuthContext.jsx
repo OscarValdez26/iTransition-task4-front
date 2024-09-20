@@ -28,10 +28,9 @@ export const AuthProvider = ({ children }) => {
         }
     }, [errors]);
 
-    // useEffect(() => {
-        const checkLogin = async () => {
-            console.log("CHECK  LOGIN");
-            const cookies = Cookies.get(); 
+    useEffect(() => {
+        async function checkLogin() {
+            const cookies = Cookies.get();
             if (!cookies.token) {
                 setIsAuth(false);
                 setUser(null);
@@ -51,7 +50,8 @@ export const AuthProvider = ({ children }) => {
                 setUser(null);
             }
         }
-    // }, [])
+        checkLogin();
+    }, []);
 
     const signup = async (user) => {
         try {
@@ -104,7 +104,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ signup, signin, signout, getusers, updateuser,updateLog, allUsers, user, isAuth, errors, checkLogin }}>
+        <AuthContext.Provider value={{ signup, signin, signout, getusers, updateuser,updateLog, allUsers, user, isAuth, errors }}>
             {children}
         </AuthContext.Provider>
     )
