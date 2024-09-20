@@ -105,8 +105,8 @@ function AdminPage() {
             data={data} 
             selectableRows 
             onSelectedRowsChange={(selected)=>{setModify(selected.selectedRows)}} 
-            pagination 
-            paginationPerPage={25} 
+            // pagination 
+            // paginationPerPage={25} 
             fixedHeader 
             />
         </div>
