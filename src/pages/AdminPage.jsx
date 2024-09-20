@@ -26,9 +26,9 @@ function AdminPage() {
         if(allUsers.length > 0){
             const filtro = allUsers.filter((userContained) => userContained.email === user.email);
             if(filtro.length > 0){
-            console.log("FILTRO: ",filtro);
-            console.log(filtro.status,typeof(filtro.status));
-            if(filtro.status === "Blocked"){console.log("Usuario bloqueado");}
+            console.log("FILTRO: ",filtro[0]);
+            console.log(filtro[0].status,typeof(filtro[0].status));
+            if(filtro[0].status === "Blocked"){console.log("Usuario bloqueado");}
             }
             else{
                 console.log("Usuario eliminado");
