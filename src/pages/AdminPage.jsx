@@ -10,6 +10,7 @@ function AdminPage() {
     const [modify,setModify] = useState([]);
     const [statusChanged,setStatusChanged] = useState(false);
     const [data,setData] = useState([]);
+    //navigate(0);
     useEffect(() => {
         let newUser = user;
         const timeElapsed = Date.now();
