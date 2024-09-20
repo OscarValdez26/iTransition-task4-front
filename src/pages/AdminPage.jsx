@@ -11,6 +11,7 @@ function AdminPage() {
         const today = new Date(timeElapsed);
          newUser.lastLogin = today.toUTCString();
          updateLog(newUser);
+         checkLogin();
          getusers();
     }, []);
     const columns = [
