@@ -69,6 +69,7 @@ function AdminPage() {
             updateuser(element);
         });
         setStatusChanged(!statusChanged);
+        clearRows();
     }
     const unlockUser = () => {
         let newModify = modify;
@@ -77,6 +78,7 @@ function AdminPage() {
             updateuser(element);
         });
         setStatusChanged(!statusChanged);
+        clearRows();
     }
     const deleteUser = () => {
         let newModify = modify;
@@ -85,6 +87,7 @@ function AdminPage() {
             updateuser(element);
         });
         setStatusChanged(!statusChanged);
+        clearRows();
     }
     const clearRows = () => {
         setToggledClearRows(!toggledClearRows);
@@ -109,7 +112,7 @@ function AdminPage() {
                 pagination 
                 paginationPerPage={25} 
                 fixedHeader
-                clearSelectedRows={true}
+                clearSelectedRows={toggledClearRows}
             />
         </div>
     );
