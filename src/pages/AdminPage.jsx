@@ -90,7 +90,8 @@ function AdminPage() {
         changeStat();
     }
     const changeStat = () =>{
-        setTimeout(()=>{setStatusChanged(!statusChanged)},1000);
+        setStatusChanged(!statusChanged);
+        //setTimeout(()=>{setStatusChanged(!statusChanged)},1000);
     }
     const clearRows = () => {
         setToggledClearRows(!toggledClearRows);
