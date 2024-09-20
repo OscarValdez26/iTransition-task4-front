@@ -26,7 +26,7 @@ function AdminPage() {
         console.log("USER: ",user);
         console.log("ALL USERS: ",allUsers);
         if(allUsers > 0){
-        console.log("FILTER: ", allUsers.filter(user));
+        console.log("FILTER: ", allUsers.filter(user.email));
         }
    }, [allUsers]);
     const columns = [
