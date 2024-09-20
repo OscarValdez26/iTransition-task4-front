@@ -1,8 +1,11 @@
 import { useAuth } from '../context/AuthContext.jsx';
 import Datatable from 'react-data-table-component';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function AdminPage() {
+    const navigate = useNavigate();
     const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
     const [statusChanged,setStatusChanged] = useState(false);
@@ -48,8 +51,7 @@ function AdminPage() {
             element.status = "Blocked";
             updateuser(element);
         });
-        setModify([]);
-        setStatusChanged(!statusChanged);
+        navigate('/admin');
     }
     const unlockUser = ()=>{
         let newModify = modify;
