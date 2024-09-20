@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
-    const statusChanged = false;
+    const [statusChanged,setStatusChanged] = useState(false);
     useEffect(() => {
         let newUser = user;
         const timeElapsed = Date.now();
@@ -48,7 +48,8 @@ function AdminPage() {
             element.status = "Blocked";
             updateuser(element);
         });
-        statusChanged=!statusChanged;
+        console.log("setStagusCHANGED");
+        setStatusChanged(!statusChanged);
     }
     const unlockUser = ()=>{
         let newModify = modify;
@@ -56,7 +57,8 @@ function AdminPage() {
             element.status = "Unblocked";
             updateuser(element);
         });
-        statusChanged=!statusChanged;
+        console.log("setStagusCHANGED");
+        setStatusChanged(!statusChanged);
     }
     const deleteUser = ()=>{
         let newModify = modify;
@@ -64,7 +66,8 @@ function AdminPage() {
             element.status = "Deleted";
             updateuser(element);
         });
-        statusChanged=!statusChanged;
+        console.log("setStagusCHANGED");
+        setStatusChanged(!statusChanged);
     }
     return (
         <div>
@@ -81,7 +84,7 @@ function AdminPage() {
             columns={columns} 
             data={data} 
             selectableRows 
-            onSelectedRowsChange={(data)=>{setModify(data.selectedRows)}} 
+            onSelectedRowsChange={(selected)=>{setModify(selected.selectedRows)}} 
             pagination 
             paginationPerPage={25} 
             fixedHeader 
