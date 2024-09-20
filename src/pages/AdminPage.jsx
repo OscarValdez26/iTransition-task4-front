@@ -12,6 +12,7 @@ function AdminPage() {
          newUser.lastLogin = today.toUTCString();
          updateLog(newUser);
          getusers();
+         const data = allUsers;
     }, []);
     const columns = [
         {
@@ -38,7 +39,6 @@ function AdminPage() {
             sortable:true
         },
     ];
-    const data = allUsers;
     const lockUser = ()=>{
         let newModify = modify;
         newModify.forEach(element => {
