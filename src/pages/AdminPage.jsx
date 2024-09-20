@@ -105,7 +105,7 @@ function AdminPage() {
                 pagination 
                 paginationPerPage={25} 
                 fixedHeader
-                clearSelectedRows
+                clearSelectedRows:true
             />
         </div>
     );
