@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
+    const [data,setData] = useState([]);
     useEffect(() => {
         let newUser = user;
         const timeElapsed = Date.now();
@@ -12,7 +13,7 @@ function AdminPage() {
          newUser.lastLogin = today.toUTCString();
          updateLog(newUser);
          getusers();
-         const data = allUsers;
+         setData(allUsers);
     }, []);
     const columns = [
         {
@@ -38,7 +39,7 @@ function AdminPage() {
             selector: row => row.status,
             sortable:true
         },
-    ];
+    ];   
     const lockUser = ()=>{
         let newModify = modify;
         newModify.forEach(element => {
