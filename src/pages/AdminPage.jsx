@@ -1,12 +1,9 @@
 import { useAuth } from '../context/AuthContext.jsx';
 import Datatable from 'react-data-table-component';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 
 function AdminPage() {
-    const navigate = useNavigate();
-    const { user, signout, signin, getusers, allUsers, updateuser, updateLog } = useAuth();
+    const { user, signout, getusers, allUsers, updateuser, updateLog } = useAuth();
     const [modify, setModify] = useState([]);
     const [statusChanged, setStatusChanged] = useState(false);
     const [toggledClearRows,setToggledClearRows] = useState(false);
@@ -61,7 +58,6 @@ function AdminPage() {
             sortable: true
         },
     ];
-
     const lockUser = () => {
         let newModify = modify;
         newModify.forEach(element => {
@@ -91,7 +87,6 @@ function AdminPage() {
     }
     const changeStat = () =>{
         setStatusChanged(!statusChanged);
-        //setTimeout(()=>{setStatusChanged(!statusChanged)},1000);
     }
     const clearRows = () => {
         setToggledClearRows(!toggledClearRows);
