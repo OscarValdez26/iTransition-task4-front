@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 function AdminPage() {
     const { user, signout, getusers, allUsers, updateuser, updateLog} = useAuth();
     const [modify,setModify] = useState([]);
-    const [statusChanged,setStatusChanged] = useState(false);
+    const statusChanged = false;
     useEffect(() => {
         let newUser = user;
         const timeElapsed = Date.now();
@@ -48,7 +48,7 @@ function AdminPage() {
             element.status = "Blocked";
             updateuser(element);
         });
-        setStatusChanged(!statusChanged);
+        statusChanged=!statusChanged;
     }
     const unlockUser = ()=>{
         let newModify = modify;
@@ -56,7 +56,7 @@ function AdminPage() {
             element.status = "Unblocked";
             updateuser(element);
         });
-        setStatusChanged(!statusChanged);
+        statusChanged=!statusChanged;
     }
     const deleteUser = ()=>{
         let newModify = modify;
@@ -64,7 +64,7 @@ function AdminPage() {
             element.status = "Deleted";
             updateuser(element);
         });
-        setStatusChanged(!statusChanged);
+        statusChanged=!statusChanged;
     }
     return (
         <div>
