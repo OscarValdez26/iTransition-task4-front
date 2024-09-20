@@ -25,6 +25,7 @@ function AdminPage() {
         data = allUsers;
         console.log("USER: ",user);
         console.log("ALL USERS: ",allUsers);
+        console.log("FILTER: ", allUsers.filter(user));
    }, [allUsers]);
     const columns = [
         {
