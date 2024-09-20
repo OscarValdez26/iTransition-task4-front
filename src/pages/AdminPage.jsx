@@ -68,8 +68,8 @@ function AdminPage() {
             element.status = "Blocked";
             updateuser(element);
         });
-        setStatusChanged(!statusChanged);
         clearRows();
+        changeStat();
     }
     const unlockUser = () => {
         let newModify = modify;
@@ -86,11 +86,11 @@ function AdminPage() {
             element.status = "Deleted";
             updateuser(element);
         });
-        setStatusChanged(!statusChanged);
         clearRows();
+        changeStat();
     }
     const changeStat = () =>{
-        setTimeout(()=>{setStatusChanged(!statusChanged)},5000);
+        setTimeout(()=>{setStatusChanged(!statusChanged)},1000);
     }
     const clearRows = () => {
         setToggledClearRows(!toggledClearRows);
