@@ -76,7 +76,7 @@ function AdminPage() {
         <div>
             <div className='flex justify-between'>
             <h1 className='text-bold text-2xl m-2'>Welcome {user.username}</h1>
-            <button className='text-bold text-sky-500 m-2 p-2 rounded-md bg-gray-700' type='submit' onClick={()=>{signout()}}>Log Out</button>
+            <button className='text-bold text-sky-500 m-2 p-2 rounded-md bg-gray-700' onClick={()=>{signout()}}>Log Out</button>
             </div>
             <div className='flex justify-start'>
                 <button className='text-bold text-white m-2 bg-red-500 p-2 rounded-md' onClick={()=>{lockUser()}}>Block</button>
