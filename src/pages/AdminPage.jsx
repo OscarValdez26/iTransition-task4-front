@@ -21,7 +21,6 @@ function AdminPage() {
     useEffect(() => {
          getusers();
          console.log("USER!!!",user);
-         const act = () =>{setData(allUsers)};
     }, [statusChanged]);
     const columns = [
         {
