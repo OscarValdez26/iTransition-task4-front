@@ -26,7 +26,14 @@ function AdminPage() {
         console.log("USER: ",user);
         console.log("ALL USERS: ",allUsers);
         if(allUsers > 0){
-        console.log("FILTER: ", allUsers.filter(user.email));
+            const filtro = allUsers.filter((userContained) => userContained.email === user.email);
+            console.log("FILTRO: ",filtro);
+            // localizarTodasLasInstancias( 'code', 'AA4');
+            // const localizarTodasLasInstancias = (propiedad, valor) => {
+            //     return allUsers.filter( element => {
+            //         return element[propiedad] === valor;
+            //     })
+        //console.log("FILTER: ", allUsers.filter(user.email));
         }
    }, [allUsers]);
     const columns = [
