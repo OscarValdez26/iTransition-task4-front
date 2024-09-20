@@ -11,12 +11,12 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route element={<ProtectedRoute/>}>
-            <Route path='/admin' element={<AdminPage/>} />
-          </Route>
+          <Route path='/' exact element={<HomePage />} />
+          <Route path='/login' exact element={<LoginPage />} />
+          <Route path='/register' exact element={<RegisterPage />} />
+          {/* <Route element={<ProtectedRoute/>}> */}
+            <Route path='/admin' exact element={<AdminPage/>} />
+          {/* </Route> */}
         </Routes>
       </BrowserRouter>
     </AuthProvider>
