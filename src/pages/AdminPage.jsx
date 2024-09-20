@@ -20,6 +20,7 @@ function AdminPage() {
     }, []);
     useEffect(() => {
          getusers();
+         console.log("USER!!!",user);
     }, [statusChanged]);
     const columns = [
         {
