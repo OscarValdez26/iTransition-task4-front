@@ -30,7 +30,7 @@ function AdminPage() {
             }
             else{
                 console.log("Usuario eliminado");
-                navigate(0);
+                //navigate(0);
             }
         }
    }, [allUsers]);
