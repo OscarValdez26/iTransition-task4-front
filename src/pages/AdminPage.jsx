@@ -9,6 +9,7 @@ function AdminPage() {
     const { user, signout, signin, getusers, allUsers, updateuser, updateLog } = useAuth();
     const [modify, setModify] = useState([]);
     const [statusChanged, setStatusChanged] = useState(false);
+    const [toggledClearRows,setToggledClearRows] = useState(false);
     let data = allUsers;
 
     useEffect(() => {
@@ -85,6 +86,9 @@ function AdminPage() {
         });
         setStatusChanged(!statusChanged);
     }
+    const clearRows = () => {
+        setToggledClearRows(!toggledClearRows);
+      }
     return (
         <div>
             <div className='flex justify-between'>
@@ -101,11 +105,11 @@ function AdminPage() {
                 columns={columns}
                 data={data}
                 selectableRows
-                onSelectedRowsChange={(selected) => { setModify(selected.selectedRows);console.log(selected.selectedCount) }}
+                onSelectedRowsChange={(selected) => { setModify(selected.selectedRows)}}
                 pagination 
                 paginationPerPage={25} 
                 fixedHeader
-                clearSelectedRows:true
+                clearSelectedRows={clearRows}
             />
         </div>
     );
