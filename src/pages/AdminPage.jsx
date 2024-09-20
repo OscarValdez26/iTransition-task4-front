@@ -48,7 +48,7 @@ function AdminPage() {
             element.status = "Blocked";
             updateuser(element);
         });
-        console.log("setStagusCHANGED");
+        setModify([]);
         setStatusChanged(!statusChanged);
     }
     const unlockUser = ()=>{
@@ -57,7 +57,7 @@ function AdminPage() {
             element.status = "Unblocked";
             updateuser(element);
         });
-        console.log("setStagusCHANGED");
+        setModify([]);
         setStatusChanged(!statusChanged);
     }
     const deleteUser = ()=>{
@@ -66,7 +66,7 @@ function AdminPage() {
             element.status = "Deleted";
             updateuser(element);
         });
-        console.log("setStagusCHANGED");
+        setModify([]);
         setStatusChanged(!statusChanged);
     }
     return (
@@ -76,9 +76,9 @@ function AdminPage() {
             <button className='text-bold text-sky-500 m-2 p-2 rounded-md bg-gray-700' type='submit' onClick={()=>{signout()}}>Log Out</button>
             </div>
             <div className='flex justify-start'>
-                <button className='text-bold text-white m-2 bg-red-500 p-2 rounded-md' type='submit' onClick={()=>{lockUser()}}>Block</button>
-                <button className='text-bold text-sky-500 m-2 bg-white p-2 rounded-md' type='submit' onClick={()=>{unlockUser()}}><img src='/unblock.png' className='w-8'/></button>
-                <button className='text-bold text-sky-500 m-2 bg-white p-2 rounded-md' type='submit' onClick={()=>{deleteUser()}}><img src='/trash.png' className='w-8'/></button>
+                <button className='text-bold text-white m-2 bg-red-500 p-2 rounded-md' onClick={()=>{lockUser()}}>Block</button>
+                <button className='text-bold text-sky-500 m-2 bg-white p-2 rounded-md' onClick={()=>{unlockUser()}}><img src='/unblock.png' className='w-8'/></button>
+                <button className='text-bold text-sky-500 m-2 bg-white p-2 rounded-md' onClick={()=>{deleteUser()}}><img src='/trash.png' className='w-8'/></button>
             </div>
             <Datatable title="Registered Users" 
             columns={columns} 
