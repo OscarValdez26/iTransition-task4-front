@@ -51,8 +51,9 @@ function AdminPage() {
             element.status = "Blocked";
             updateuser(element);
         });
-        setModify([]);
-        setStatusChanged(!statusChanged);
+        navigate(0);
+        // setModify([]);
+        // setStatusChanged(!statusChanged);
     }
     const unlockUser = ()=>{
         let newModify = modify;
@@ -60,8 +61,9 @@ function AdminPage() {
             element.status = "Unblocked";
             updateuser(element);
         });
-        setModify([]);
-        setStatusChanged(!statusChanged);
+        location.reload();
+        // setModify([]);
+        // setStatusChanged(!statusChanged);
     }
     const deleteUser = ()=>{
         let newModify = modify;
